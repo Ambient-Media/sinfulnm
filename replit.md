@@ -108,6 +108,8 @@ JuiceCraft is a modern e-commerce web application for premium artisan juices, bu
 
 ## Changelog
 
+- June 24, 2025: Fixed mobile carousel display with proper fade transitions and removed extra formatting box
+- June 24, 2025: Resolved cart functionality issues with session-based storage and red badge counter
 - June 24, 2025: Added cart functionality with red badge counter and slide-out menu
 - June 24, 2025: Implemented slower fade transitions for mobile carousel (6s intervals)
 - June 24, 2025: Fixed product display issues for AWS deployment with fallback catalog

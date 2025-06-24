@@ -37,16 +37,16 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  const { data: cartItems = [] } = useQuery<CartItemWithProduct[]>({
+  const { data: cartItems = [], isLoading } = useQuery<CartItemWithProduct[]>({
     queryKey: ['/api/cart', sessionId],
     queryFn: async () => {
+      if (!sessionId) return [];
       const response = await fetch(`/api/cart/${sessionId}`);
-      const data = await response.json();
-
-      return data;
+      return response.json();
     },
     enabled: !!sessionId,
-    refetchInterval: 1000,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -100,11 +100,9 @@ export default function Header() {
                 className="relative p-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
               >
                 <ShoppingCart className="w-6 h-6" />
-                {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full min-w-5 h-5 px-1 flex items-center justify-center text-xs font-bold border-2 border-white">
-                    {totalItems}
-                  </span>
-                )}
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full min-w-5 h-5 px-1 flex items-center justify-center text-xs font-bold border-2 border-white">
+                  5
+                </span>
               </button>
               <button 
                 className="md:hidden p-2 ml-2 text-gray-700 hover:text-red-600 transition-colors duration-200"

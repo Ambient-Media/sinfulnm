@@ -37,8 +37,7 @@ export default function ProductCard({ product, className = "" }: ProductCardProp
     },
     onSuccess: () => {
       const sessionId = getSessionId();
-      queryClient.invalidateQueries({ queryKey: ['/api/cart'] });
-      queryClient.refetchQueries({ queryKey: ['/api/cart', sessionId] });
+      queryClient.invalidateQueries({ queryKey: ['/api/cart', sessionId] });
       setJustAdded(true);
       setTimeout(() => setJustAdded(false), 1500);
       toast({
