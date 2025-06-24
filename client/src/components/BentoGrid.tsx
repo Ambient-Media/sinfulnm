@@ -32,6 +32,11 @@ export default function BentoGrid() {
           />
         ))}
       </div>
+      
+      {/* Units per case text */}
+      <div className="text-center mt-6">
+        <p className="text-gray-600 italic">20 units per case</p>
+      </div>
     </div>
   );
 }
