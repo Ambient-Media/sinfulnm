@@ -85,16 +85,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Cart item not found" });
       }
       
-      // Get product details for the updated item
-      const product = await storage.getProduct(updatedItem.productId);
-      const itemWithProduct = {
-        ...updatedItem,
-        product
-      };
-      
-      res.json(itemWithProduct);
+      res.json(updatedItem);
     } catch (error) {
-      console.error("Error updating cart item:", error);
       res.status(500).json({ message: "Failed to update cart item" });
     }
   });
@@ -109,9 +101,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Cart item not found" });
       }
       
-      res.json({ message: "Item removed from cart", success: true });
+      res.json({ message: "Item removed from cart" });
     } catch (error) {
-      console.error("Error removing cart item:", error);
       res.status(500).json({ message: "Failed to remove item from cart" });
     }
   });
