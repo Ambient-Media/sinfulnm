@@ -122,11 +122,6 @@ export default function MobileCarousel() {
           </button>
         ))}
       </div>
-      
-      {/* Units per case text */}
-      <div className="text-center mt-4">
-        <p className="text-gray-600 italic">20 units per case</p>
-      </div>
     </div>
   );
 }
