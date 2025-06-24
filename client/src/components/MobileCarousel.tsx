@@ -3,23 +3,64 @@ import { useQuery } from "@tanstack/react-query";
 import ProductCard from "./ProductCard";
 import type { Product } from "@shared/schema";
 
+// Fallback products for when API is not available
+const FALLBACK_PRODUCTS: Product[] = [
+  {
+    id: 1,
+    name: "Blue Razz Euphoria",
+    description: "THC-infused blue raspberry flavor that delivers a burst of fruity bliss",
+    imageUrl: "/products/blue-razz-euphoria.webp",
+    ingredients: "THC distillate, blue raspberry flavoring, natural sweeteners",
+    category: "THC Beverages"
+  },
+  {
+    id: 2,
+    name: "Huckleberry Body",
+    description: "Rich huckleberry taste with full-body relaxation effects",
+    imageUrl: "/products/huckleberry-body.webp",
+    ingredients: "THC distillate, huckleberry extract, organic cane sugar",
+    category: "THC Beverages"
+  },
+  {
+    id: 3,
+    name: "Orange Vanilla Dream",
+    description: "Creamy orange vanilla blend for the perfect mellow experience",
+    imageUrl: "/products/orange-vanilla.webp",
+    ingredients: "THC distillate, orange extract, vanilla, coconut cream",
+    category: "THC Beverages"
+  },
+  {
+    id: 4,
+    name: "Strawberry Bliss",
+    description: "Fresh strawberry flavor with uplifting and energizing effects",
+    imageUrl: "/products/strawberry.webp",
+    ingredients: "THC distillate, strawberry puree, natural fruit acids",
+    category: "THC Beverages"
+  }
+];
+
 export default function MobileCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const { data: products = [], isLoading } = useQuery<Product[]>({
+  const { data: products, isLoading, error } = useQuery<Product[]>({
     queryKey: ['/api/products'],
+    retry: 1,
+    staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
+  // Use fallback products if API fails or is not available
+  const displayProducts = products && products.length > 0 ? products : FALLBACK_PRODUCTS;
+
   useEffect(() => {
-    if (products.length === 0 || isPaused) return;
+    if (displayProducts.length === 0 || isPaused) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % Math.min(products.length, 4));
+      setCurrentSlide((prev) => (prev + 1) % Math.min(displayProducts.length, 4));
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [products.length, isPaused]);
+  }, [displayProducts.length, isPaused]);
 
   const handleDotClick = (index: number) => {
     setCurrentSlide(index);
@@ -50,8 +91,15 @@ export default function MobileCarousel() {
 
   return (
     <div className="lg:hidden relative" onTouchStart={handleTouch}>
+      {error && (
+        <div className="text-center mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <p className="text-yellow-800 text-sm">
+            Using offline product catalog. Live pricing may vary.
+          </p>
+        </div>
+      )}
       <div className="carousel-container relative overflow-hidden rounded-3xl">
-        {products.slice(0, 4).map((product, index) => (
+        {displayProducts.slice(0, 4).map((product, index) => (
           <div
             key={product.id}
             className={`carousel-item ${
@@ -65,7 +113,7 @@ export default function MobileCarousel() {
 
       {/* Carousel Controls - Product Previews */}
       <div className="flex justify-center mt-6 space-x-3">
-        {products.slice(0, 4).map((product, index) => (
+        {displayProducts.slice(0, 4).map((product, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
