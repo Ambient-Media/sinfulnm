@@ -40,7 +40,7 @@ export default function Header() {
     <>
       <header className="bg-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex items-center h-20">
             {/* Logo */}
             <div className="flex items-center">
               <img 
@@ -50,15 +50,31 @@ export default function Header() {
               />
             </div>
             
+            {/* Spacer */}
+            <div className="flex-1"></div>
+            
             {/* Navigation */}
-            <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Products</a>
-              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">About</a>
-              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Contact</a>
+            <nav className="hidden md:flex items-center space-x-6">
+              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium flex items-center space-x-2">
+                <User className="w-4 h-4" />
+                <span>Login</span>
+              </a>
+              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium flex items-center space-x-2">
+                <MessageCircle className="w-4 h-4" />
+                <span>Support</span>
+              </a>
+              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium flex items-center space-x-2">
+                <HelpCircle className="w-4 h-4" />
+                <span>FAQ</span>
+              </a>
+              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium flex items-center space-x-2">
+                <Info className="w-4 h-4" />
+                <span>About</span>
+              </a>
             </nav>
             
             {/* Cart & Mobile Menu */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center ml-6">
               <button className="relative p-2 text-gray-700 hover:text-red-600 transition-colors duration-200">
                 <ShoppingCart className="w-6 h-6" />
                 {totalItems > 0 && (
@@ -68,7 +84,7 @@ export default function Header() {
                 )}
               </button>
               <button 
-                className="md:hidden p-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="md:hidden p-2 ml-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
                 onClick={toggleMobileMenu}
                 aria-label="Toggle mobile menu"
               >
