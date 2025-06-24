@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import BentoGrid from "@/components/BentoGrid";
 import MobileCarousel from "@/components/MobileCarousel";
-import heroImagePath from "@assets/white-sands-national-park-at-sunset-rule-of-thirds-wK4f76gsS7G5ZndWa24I9A-0h7rdUx5Si-tUCXvDyC-bQ(1)_1750733973429.jpg";
 
 export default function Home() {
   return (
@@ -10,19 +9,16 @@ export default function Home() {
       
       {/* Hero Section */}
       <section 
-        className="relative text-white py-16 bg-cover bg-center bg-no-repeat min-h-[500px] flex items-center"
+        className="relative text-white py-10 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url(${heroImagePath})`
+          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/hero-image.jpg')"
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">Shop Sinful New Mexico</h1>
-          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-medium drop-shadow-md">
-            Wholesale ordering for premium artisan juices
+          <h1 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Shop Sinful New Mexico</h1>
+          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto font-medium">
+            Wholesale ordering
           </p>
-          <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-200 shadow-lg">
-            Shop Now
-          </button>
         </div>
       </section>
 
