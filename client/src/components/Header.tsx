@@ -1,4 +1,4 @@
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Menu, X, User, HelpCircle, MessageCircle, Info } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import type { CartItemWithProduct } from "@/lib/types";
@@ -15,10 +15,19 @@ function getSessionId(): string {
 
 export default function Header() {
   const [sessionId, setSessionId] = useState<string>("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setSessionId(getSessionId());
   }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   const { data: cartItems = [] } = useQuery<CartItemWithProduct[]>({
     queryKey: ['/api/cart', sessionId],
@@ -28,43 +37,113 @@ export default function Header() {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img 
-              src={sinfulLogoPath} 
-              alt="Sinful Logo" 
-              className="h-12 w-auto"
-            />
+    <>
+      <header className="bg-white shadow-lg sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo */}
+            <div className="flex items-center">
+              <img 
+                src={sinfulLogoPath} 
+                alt="Sinful Logo" 
+                className="h-12 w-auto"
+              />
+            </div>
+            
+            {/* Navigation */}
+            <nav className="hidden md:flex space-x-8">
+              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Products</a>
+              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">About</a>
+              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Contact</a>
+            </nav>
+            
+            {/* Cart & Mobile Menu */}
+            <div className="flex items-center space-x-4">
+              <button className="relative p-2 text-gray-700 hover:text-red-600 transition-colors duration-200">
+                <ShoppingCart className="w-6 h-6" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+                    {totalItems}
+                  </span>
+                )}
+              </button>
+              <button 
+                className="md:hidden p-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
+                onClick={toggleMobileMenu}
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
-          
-          {/* Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Products</a>
-            <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">About</a>
-            <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Contact</a>
-          </nav>
-          
-          {/* Cart & Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <button className="relative p-2 text-gray-700 hover:text-red-600 transition-colors duration-200">
-              <ShoppingCart className="w-6 h-6" />
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={closeMobileMenu}
+        />
+      )}
+
+      {/* Mobile Menu */}
+      <div className={`fixed top-20 right-0 h-[calc(100vh-5rem)] w-80 bg-white shadow-xl z-50 md:hidden transform transition-transform duration-300 ease-in-out ${
+        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <div className="flex flex-col h-full">
+          <div className="p-6 space-y-4">
+            <button 
+              onClick={closeMobileMenu}
+              className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
+            >
+              <User className="w-5 h-5 text-gray-600" />
+              <span className="text-gray-700 font-medium">Login</span>
+            </button>
+            
+            <button 
+              onClick={closeMobileMenu}
+              className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
+            >
+              <ShoppingCart className="w-5 h-5 text-gray-600" />
+              <span className="text-gray-700 font-medium">Cart</span>
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+                <span className="ml-auto bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
                   {totalItems}
                 </span>
               )}
             </button>
-            <button className="md:hidden p-2 text-gray-700 hover:text-red-600 transition-colors duration-200">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+            
+            <button 
+              onClick={closeMobileMenu}
+              className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
+            >
+              <MessageCircle className="w-5 h-5 text-gray-600" />
+              <span className="text-gray-700 font-medium">Support</span>
+            </button>
+            
+            <button 
+              onClick={closeMobileMenu}
+              className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
+            >
+              <HelpCircle className="w-5 h-5 text-gray-600" />
+              <span className="text-gray-700 font-medium">FAQ</span>
+            </button>
+            
+            <button 
+              onClick={closeMobileMenu}
+              className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
+            >
+              <Info className="w-5 h-5 text-gray-600" />
+              <span className="text-gray-700 font-medium">About</span>
             </button>
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }
