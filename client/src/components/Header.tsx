@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import type { CartItemWithProduct } from "@/lib/types";
 import sinfulLogoPath from "@assets/Rounded-2023-Sinful-Logo-White_1750732218496.png";
+import LoginModal from "./LoginModal";
 
 function getSessionId(): string {
   let sessionId = localStorage.getItem('sinful-session-id');
@@ -16,6 +17,7 @@ function getSessionId(): string {
 export default function Header() {
   const [sessionId, setSessionId] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   useEffect(() => {
     setSessionId(getSessionId());
@@ -55,10 +57,10 @@ export default function Header() {
             
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium flex items-center space-x-2">
+              <button onClick={() => setIsLoginModalOpen(true)} className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium flex items-center space-x-2">
                 <User className="w-4 h-4" />
                 <span>Login</span>
-              </a>
+              </button>
               <a href="#" className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium flex items-center space-x-2">
                 <MessageCircle className="w-4 h-4" />
                 <span>Support</span>
@@ -114,7 +116,10 @@ export default function Header() {
         <div className="flex flex-col h-full">
           <div className="p-6 space-y-4">
             <button 
-              onClick={closeMobileMenu}
+              onClick={() => {
+                closeMobileMenu();
+                setIsLoginModalOpen(true);
+              }}
               className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
             >
               <User className="w-5 h-5 text-gray-600" />
@@ -160,6 +165,11 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      <LoginModal 
+        isOpen={isLoginModalOpen} 
+        onClose={() => setIsLoginModalOpen(false)} 
+      />
     </>
   );
 }

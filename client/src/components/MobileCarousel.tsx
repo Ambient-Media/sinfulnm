@@ -63,16 +63,22 @@ export default function MobileCarousel() {
         ))}
       </div>
 
-      {/* Carousel Controls */}
-      <div className="flex justify-center mt-6 space-x-2">
-        {products.slice(0, 4).map((_, index) => (
+      {/* Carousel Controls - Product Previews */}
+      <div className="flex justify-center mt-6 space-x-3">
+        {products.slice(0, 4).map((product, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-              index === currentSlide ? 'bg-red-600' : 'bg-gray-300'
+            className={`w-12 h-12 rounded-full transition-all duration-200 border-2 overflow-hidden ${
+              index === currentSlide ? 'border-red-600 scale-110' : 'border-gray-300'
             }`}
-          />
+          >
+            <img 
+              src={product.imageUrl} 
+              alt={product.name}
+              className="w-full h-full object-cover"
+            />
+          </button>
         ))}
       </div>
     </div>

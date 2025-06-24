@@ -15,8 +15,8 @@ export default function Home() {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Shop Sinful New Mexico</h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto font-medium">
+          <h1 className="text-2xl md:text-3xl font-bold mb-6 text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>Shop Sinful New Mexico</h1>
+          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-medium" style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)' }}>
             Wholesale ordering
           </p>
         </div>
