@@ -100,9 +100,11 @@ export default function Header() {
                 className="relative p-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
               >
                 <ShoppingCart className="w-6 h-6" />
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full min-w-5 h-5 px-1 flex items-center justify-center text-xs font-bold border-2 border-white">
-                  5
-                </span>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full min-w-5 h-5 px-1 flex items-center justify-center text-xs font-bold border-2 border-white">
+                    {totalItems}
+                  </span>
+                )}
               </button>
               <button 
                 className="md:hidden p-2 ml-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
