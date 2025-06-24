@@ -98,6 +98,9 @@ export default function MobileCarousel() {
             className={`carousel-item ${
               index === currentSlide ? 'active' : ''
             }`}
+            style={{
+              display: index === currentSlide ? 'block' : 'none'
+            }}
           >
             <ProductCard product={product} className="rounded-3xl" />
           </div>
