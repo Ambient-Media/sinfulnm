@@ -8,36 +8,17 @@ export default function Home() {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-20">
+      <section 
+        className="relative text-white py-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Sinfully Good</h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Premium craft juices made from the finest ingredients. Each bottle is a journey of pure, indulgent flavor.
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-800">Shop Sinful New Mexico</h1>
+          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto font-medium">
+            Wholesale ordering
           </p>
-          
-          {/* Colorful fruit ingredients background */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            <img 
-              src="https://images.unsplash.com/photo-1543528176-61b239494933?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-              alt="Fresh strawberries and berries" 
-              className="rounded-2xl shadow-lg w-full h-24 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" 
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-              alt="Fresh citrus fruits" 
-              className="rounded-2xl shadow-lg w-full h-24 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" 
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1528825871115-3581a5387919?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-              alt="Tropical fruits" 
-              className="rounded-2xl shadow-lg w-full h-24 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" 
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-              alt="Fresh green vegetables and fruits" 
-              className="rounded-2xl shadow-lg w-full h-24 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" 
-            />
-          </div>
         </div>
       </section>
 
