@@ -4,11 +4,11 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  
+
   getAllProducts(): Promise<Product[]>;
   getProduct(id: number): Promise<Product | undefined>;
   createProduct(product: InsertProduct): Promise<Product>;
-  
+
   getCartItems(sessionId: string): Promise<CartItem[]>;
   addToCart(item: InsertCartItem): Promise<CartItem>;
   updateCartItem(id: number, quantity: number): Promise<CartItem | undefined>;
@@ -16,22 +16,37 @@ export interface IStorage {
   clearCart(sessionId: string): Promise<boolean>;
 }
 
+// Order types
+export type Order = {
+  id: number;
+  userId: number;
+  items: CartItem[];
+  total: number;
+  createdAt: string;
+};
+
+export type InsertOrder = Omit<Order, 'id' | 'createdAt'>;
+
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private products: Map<number, Product>;
   private cartItems: Map<number, CartItem>;
+  private orders: Map<number, Order>; // Added orders map
   private currentUserId: number;
   private currentProductId: number;
   private currentCartId: number;
+  private currentOrderId: number; // Added order id counter
 
   constructor() {
     this.users = new Map();
     this.products = new Map();
     this.cartItems = new Map();
+    this.orders = new Map(); // Initialize orders map
     this.currentUserId = 1;
     this.currentProductId = 1;
     this.currentCartId = 1;
-    
+    this.currentOrderId = 1; // Initialize order id counter
+
     // Initialize with premium juice products
     this.initializeProducts();
   }
@@ -148,12 +163,26 @@ export class MemStorage implements IStorage {
   async clearCart(sessionId: string): Promise<boolean> {
     const itemsToRemove = Array.from(this.cartItems.entries())
       .filter(([_, item]) => item.sessionId === sessionId);
-    
+
     itemsToRemove.forEach(([id, _]) => {
       this.cartItems.delete(id);
     });
 
     return true;
+  }
+
+  async createOrder(order: InsertOrder): Promise<Order> {
+    const newOrder: Order = {
+      id: this.currentOrderId++,
+      ...order,
+      createdAt: new Date().toISOString(),
+    };
+    this.orders.set(newOrder.id, newOrder);
+    return newOrder;
+  }
+
+  async getOrder(id: number): Promise<Order | undefined> {
+    return this.orders.get(id);
   }
 }
 

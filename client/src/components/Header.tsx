@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import type { CartItemWithProduct } from "@/lib/types";
 import sinfulLogoPath from "@assets/Rounded-2023-Sinful-Logo-White_1750732218496.png";
-import LoginModal from "./LoginModal";
+import LoginModal from "@/components/LoginModal";
+import OrderForm from "@/components/OrderForm";
 
 function getSessionId(): string {
   let sessionId = localStorage.getItem('sinful-session-id');
@@ -18,6 +19,7 @@ export default function Header() {
   const [sessionId, setSessionId] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isOrderFormOpen, setIsOrderFormOpen] = useState(false);
 
   useEffect(() => {
     setSessionId(getSessionId());
@@ -51,10 +53,10 @@ export default function Header() {
                 className="h-12 w-auto"
               />
             </div>
-            
+
             {/* Spacer */}
             <div className="flex-1"></div>
-            
+
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
               <button onClick={() => setIsLoginModalOpen(true)} className="text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium flex items-center space-x-2">
@@ -74,7 +76,7 @@ export default function Header() {
                 <span>About</span>
               </a>
             </nav>
-            
+
             {/* Cart & Mobile Menu */}
             <div className="flex items-center ml-6">
               <button className="relative p-2 text-gray-700 hover:text-red-600 transition-colors duration-200">
@@ -125,7 +127,7 @@ export default function Header() {
               <User className="w-5 h-5 text-gray-600" />
               <span className="text-gray-700 font-medium">Login</span>
             </button>
-            
+
             <button 
               onClick={closeMobileMenu}
               className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
@@ -138,7 +140,7 @@ export default function Header() {
                 </span>
               )}
             </button>
-            
+
             <button 
               onClick={closeMobileMenu}
               className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
@@ -146,7 +148,7 @@ export default function Header() {
               <MessageCircle className="w-5 h-5 text-gray-600" />
               <span className="text-gray-700 font-medium">Support</span>
             </button>
-            
+
             <button 
               onClick={closeMobileMenu}
               className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
@@ -154,7 +156,7 @@ export default function Header() {
               <HelpCircle className="w-5 h-5 text-gray-600" />
               <span className="text-gray-700 font-medium">FAQ</span>
             </button>
-            
+
             <button 
               onClick={closeMobileMenu}
               className="flex items-center space-x-3 w-full p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 text-left"
@@ -169,6 +171,17 @@ export default function Header() {
       <LoginModal 
         isOpen={isLoginModalOpen} 
         onClose={() => setIsLoginModalOpen(false)} 
+      />
+
+      <OrderForm
+        isOpen={isOrderFormOpen}
+        onClose={() => setIsOrderFormOpen(false)}
+        cartItems={cartItems}
+        sessionId={sessionId}
+        onOrderSuccess={() => {
+          // Refresh cart data
+          window.location.reload();
+        }}
       />
     </>
   );
