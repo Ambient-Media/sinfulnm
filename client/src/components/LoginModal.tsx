@@ -26,7 +26,6 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login/signup logic here
     console.log("Form submitted:", formData);
     onClose();
   };
@@ -68,92 +67,92 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-          {isSignUp && (
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="firstName" className="text-gray-700 font-medium">
-                  First Name
-                </Label>
-                <Input
-                  id="firstName"
-                  name="firstName"
-                  type="text"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
-                  required
-                />
+            {isSignUp && (
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="firstName" className="text-gray-700 font-medium">
+                    First Name
+                  </Label>
+                  <Input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="lastName" className="text-gray-700 font-medium">
+                    Last Name
+                  </Label>
+                  <Input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
+                    required
+                  />
+                </div>
               </div>
-              <div>
-                <Label htmlFor="lastName" className="text-gray-700 font-medium">
-                  Last Name
-                </Label>
-                <Input
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
-                  required
-                />
-              </div>
-            </div>
-          )}
+            )}
 
-          <div>
-            <Label htmlFor="email" className="text-gray-700 font-medium">
-              Email Address
-            </Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
-              required
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="password" className="text-gray-700 font-medium">
-              Password
-            </Label>
-            <Input
-              id="password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
-              required
-            />
-          </div>
-
-          {isSignUp && (
             <div>
-              <Label htmlFor="confirmPassword" className="text-gray-700 font-medium">
-                Confirm Password
+              <Label htmlFor="email" className="text-gray-700 font-medium">
+                Email Address
               </Label>
               <Input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                value={formData.confirmPassword}
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
                 onChange={handleInputChange}
                 className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
                 required
               />
             </div>
-          )}
 
-          <Button
-            type="submit"
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 rounded-lg transition-colors duration-200"
-          >
-            {isSignUp ? "Create Account" : "Sign In"}
-          </Button>
+            <div>
+              <Label htmlFor="password" className="text-gray-700 font-medium">
+                Password
+              </Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
+                required
+              />
+            </div>
+
+            {isSignUp && (
+              <div>
+                <Label htmlFor="confirmPassword" className="text-gray-700 font-medium">
+                  Confirm Password
+                </Label>
+                <Input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  value={formData.confirmPassword}
+                  onChange={handleInputChange}
+                  className="mt-1 border-gray-300 focus:border-red-500 focus:ring-red-500"
+                  required
+                />
+              </div>
+            )}
+
+            <Button
+              type="submit"
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 rounded-lg transition-colors duration-200"
+            >
+              {isSignUp ? "Create Account" : "Sign In"}
+            </Button>
           </form>
 
           <div className="border-t border-gray-200 my-6"></div>
