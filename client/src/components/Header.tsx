@@ -40,11 +40,13 @@ export default function Header() {
   const { data: cartItems = [] } = useQuery<CartItemWithProduct[]>({
     queryKey: ['/api/cart', sessionId],
     enabled: !!sessionId,
-    staleTime: 0,
-    cacheTime: 0,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  
+
 
 
   return (
