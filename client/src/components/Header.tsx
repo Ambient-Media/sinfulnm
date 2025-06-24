@@ -39,10 +39,18 @@ export default function Header() {
 
   const { data: cartItems = [] } = useQuery<CartItemWithProduct[]>({
     queryKey: ['/api/cart', sessionId],
+    queryFn: async () => {
+      const response = await fetch(`/api/cart/${sessionId}`);
+      const data = await response.json();
+
+      return data;
+    },
     enabled: !!sessionId,
+    refetchInterval: 1000,
   });
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
 
   
 

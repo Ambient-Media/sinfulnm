@@ -113,15 +113,9 @@ export class MemStorage implements IStorage {
   }
 
   async getCartItems(sessionId: string): Promise<CartItem[]> {
-    console.log(`Getting cart items for session: ${sessionId}`);
-    console.log(`Total items in storage: ${this.cartItems.size}`);
-    
     const items = Array.from(this.cartItems.values()).filter(
       (item) => item.sessionId === sessionId
     );
-    
-    console.log(`Found ${items.length} items for session ${sessionId}`);
-    console.log(`Items:`, items);
     
     return items;
   }
