@@ -41,23 +41,24 @@ Your JuiceCraft application is now ready for AWS Amplify deployment with the fol
 - Update `DATABASE_URL` in backend deployment
 
 ### 4. Environment Variables:
-**Backend:**
+**Backend (Required for full functionality):**
 - `DATABASE_URL` - PostgreSQL connection string
 - `EMAIL_USER` - Gmail address for notifications
 - `EMAIL_PASS` - Gmail app password
 - `NOTIFICATION_EMAIL` - Order notification recipient
 
-**Frontend (Amplify):**
-- `VITE_API_URL` - Backend API base URL
+**Frontend (Amplify - Optional):**
+- `VITE_API_URL` - Backend API base URL (if not set, app uses offline product catalog)
 
 ## Production Checklist:
 - [ ] Code pushed to GitHub
 - [ ] Frontend deployed to Amplify
-- [ ] Backend deployed to chosen platform
-- [ ] Database configured and migrated
+- [ ] Products display correctly (using fallback catalog if backend unavailable)
+- [ ] Backend deployed to chosen platform (optional for display-only mode)
+- [ ] Database configured and migrated (optional for display-only mode)
 - [ ] Environment variables set in both deployments
-- [ ] API URLs updated in redirect configuration
-- [ ] Test order flow end-to-end
+- [ ] Test product display and navigation
+- [ ] Test order flow end-to-end (if backend available)
 
 ## Architecture:
 - **Frontend**: React SPA on AWS Amplify

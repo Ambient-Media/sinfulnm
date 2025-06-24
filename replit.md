@@ -108,6 +108,7 @@ JuiceCraft is a modern e-commerce web application for premium artisan juices, bu
 
 ## Changelog
 
+- June 24, 2025: Fixed product display issues for AWS deployment with fallback catalog
 - June 24, 2025: AWS Amplify deployment configuration completed
 - June 24, 2025: Fixed nodemailer and server startup issues
 - June 24, 2025: Initial setup
