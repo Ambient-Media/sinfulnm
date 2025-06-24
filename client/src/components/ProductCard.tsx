@@ -29,7 +29,7 @@ export default function ProductCard({ product, className = "" }: ProductCardProp
     mutationFn: async (data: AddToCartRequest) => {
       // If API_BASE_URL is not set (production without backend), show success message but don't actually add to cart
       if (!import.meta.env.VITE_API_URL) {
-        return { success: true, message: "Item noted! Contact us to complete your order." };
+        return { success: true, message: "Thank you for your interest! Please contact us to place your order." };
       }
       return apiRequest("POST", "/api/cart", data);
     },

@@ -116,3 +116,4 @@ JuiceCraft is a modern e-commerce web application for premium artisan juices, bu
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Site purpose: Product catalog/display only - no payment processing or e-commerce functionality needed.

@@ -91,13 +91,6 @@ export default function MobileCarousel() {
 
   return (
     <div className="lg:hidden relative" onTouchStart={handleTouch}>
-      {error && (
-        <div className="text-center mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-          <p className="text-yellow-800 text-sm">
-            Using offline product catalog. Live pricing may vary.
-          </p>
-        </div>
-      )}
       <div className="carousel-container relative overflow-hidden rounded-3xl">
         {displayProducts.slice(0, 4).map((product, index) => (
           <div

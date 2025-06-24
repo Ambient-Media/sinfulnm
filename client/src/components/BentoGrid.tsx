@@ -64,13 +64,6 @@ export default function BentoGrid() {
 
   return (
     <div className="hidden lg:block">
-      {error && (
-        <div className="text-center mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-          <p className="text-yellow-800 text-sm">
-            Using offline product catalog. Live pricing and availability may vary.
-          </p>
-        </div>
-      )}
       <div className="bento-grid">
         {displayProducts.slice(0, 4).map((product, index) => (
           <ProductCard
