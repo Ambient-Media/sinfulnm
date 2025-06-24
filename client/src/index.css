@@ -129,6 +129,11 @@
 }
 
 /* Mobile Carousel */
+.carousel-container {
+  position: relative;
+  min-height: 400px;
+}
+
 .carousel-item {
   position: absolute;
   top: 0;
@@ -136,10 +141,12 @@
   width: 100%;
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
+  pointer-events: none;
 }
 
 .carousel-item.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Hover Effects */

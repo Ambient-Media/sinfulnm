@@ -74,7 +74,7 @@ export default function MobileCarousel() {
     setTimeout(() => setIsPaused(false), 8000);
   };
 
-  if (isLoading) {
+  if (isLoading || displayProducts.length === 0) {
     return (
       <div className="lg:hidden relative">
         <div className="bg-gray-200 rounded-3xl shadow-xl overflow-hidden animate-pulse">
@@ -91,7 +91,7 @@ export default function MobileCarousel() {
 
   return (
     <div className="lg:hidden relative" onTouchStart={handleTouch}>
-      <div className="carousel-container relative overflow-hidden rounded-3xl">
+      <div className="carousel-container rounded-3xl overflow-hidden shadow-xl">
         {displayProducts.slice(0, 4).map((product, index) => (
           <div
             key={product.id}
@@ -99,7 +99,7 @@ export default function MobileCarousel() {
               index === currentSlide ? 'active' : ''
             }`}
           >
-            <ProductCard product={product} />
+            <ProductCard product={product} className="rounded-none" />
           </div>
         ))}
       </div>

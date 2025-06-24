@@ -62,6 +62,10 @@ export default function BentoGrid() {
     );
   }
 
+  if (displayProducts.length === 0) {
+    return <div className="hidden lg:block text-center py-12">Loading products...</div>;
+  }
+
   return (
     <div className="hidden lg:block">
       <div className="bento-grid">
