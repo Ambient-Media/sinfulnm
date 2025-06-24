@@ -91,9 +91,26 @@ JuiceCraft is a modern e-commerce web application for premium artisan juices, bu
 - **Environment variables** for secure database connection
 - **Schema synchronization** with `drizzle-kit push` command
 
+## Deployment Configuration
+
+### AWS Amplify Setup
+- ✓ Created `amplify.yml` build configuration
+- ✓ Added `_redirects` file for SPA routing
+- ✓ Configured environment variable support (`VITE_API_URL`)
+- ✓ Set up frontend build optimization with code splitting
+- ✓ Created comprehensive deployment guide (`README-AMPLIFY.md`)
+
+### Production Considerations
+- Backend requires separate deployment (Vercel, Heroku, AWS Lambda)
+- Database needs external hosting (AWS RDS, Neon.tech)
+- Environment variables must be configured in both frontend and backend
+- Session-based cart storage requires persistent backend service
+
 ## Changelog
 
-- June 24, 2025. Initial setup
+- June 24, 2025: AWS Amplify deployment configuration completed
+- June 24, 2025: Fixed nodemailer and server startup issues
+- June 24, 2025: Initial setup
 
 ## User Preferences
 
