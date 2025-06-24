@@ -40,6 +40,8 @@ export default function Header() {
   const { data: cartItems = [] } = useQuery<CartItemWithProduct[]>({
     queryKey: ['/api/cart', sessionId],
     enabled: !!sessionId,
+    staleTime: 0,
+    cacheTime: 0,
   });
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -90,7 +92,7 @@ export default function Header() {
               >
                 <ShoppingCart className="w-6 h-6" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+                  <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full min-w-5 h-5 px-1 flex items-center justify-center text-xs font-bold border-2 border-white">
                     {totalItems}
                   </span>
                 )}
