@@ -130,13 +130,15 @@
 
 /* Mobile Carousel */
 .carousel-item {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 1.2s ease-in-out;
 }
 
 .carousel-item.active {
-  display: block;
   opacity: 1;
 }
 

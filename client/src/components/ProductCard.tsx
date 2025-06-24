@@ -25,6 +25,7 @@ export default function ProductCard({ product, className = "" }: ProductCardProp
   const [quantity, setQuantity] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
   const queryClient = useQueryClient();
+  const { toast } = useToast();
 
   const addToCartMutation = useMutation({
     mutationFn: async (data: AddToCartRequest) => {
@@ -35,7 +36,8 @@ export default function ProductCard({ product, className = "" }: ProductCardProp
       return apiRequest("POST", "/api/cart", data);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/cart'] });
+      const sessionId = getSessionId();
+      queryClient.invalidateQueries({ queryKey: ['/api/cart', sessionId] });
       setJustAdded(true);
       setTimeout(() => setJustAdded(false), 1500);
       toast({

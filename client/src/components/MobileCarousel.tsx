@@ -57,7 +57,7 @@ export default function MobileCarousel() {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % Math.min(displayProducts.length, 4));
-    }, 4000);
+    }, 6000); // Slowed down by 50% (4000ms -> 6000ms)
 
     return () => clearInterval(interval);
   }, [displayProducts.length, isPaused]);
