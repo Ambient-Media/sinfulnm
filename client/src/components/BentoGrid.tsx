@@ -28,7 +28,7 @@ export default function BentoGrid() {
           <ProductCard
             key={product.id}
             product={product}
-            className={`bento-item-${index + 1}`}
+            className={`bento-item-${index + 1} bg-white`}
           />
         ))}
       </div>

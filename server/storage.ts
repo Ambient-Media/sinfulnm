@@ -39,46 +39,32 @@ export class MemStorage implements IStorage {
   private initializeProducts() {
     const initialProducts: InsertProduct[] = [
       {
-        name: "Green Goddess",
-        description: "Kale, spinach, apple, and ginger blend",
-        imageUrl: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-        ingredients: "Kale, Spinach, Apple, Ginger, Lemon",
-        category: "Green Juice"
+        name: "Blue Razz Euphoria",
+        description: "THC + CBG Infused - 50mg THC + 50mg CBG",
+        imageUrl: "/products/blue-razz-euphoria.webp",
+        ingredients: "THC, CBG, Natural Blue Raspberry Flavor",
+        category: "THC Infused"
       },
       {
-        name: "Citrus Burst",
-        description: "Orange, lemon, and lime fusion",
-        imageUrl: "https://images.unsplash.com/photo-1613478223719-2ab802602423?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-        ingredients: "Orange, Lemon, Lime, Mint",
-        category: "Citrus"
+        name: "Huckleberry Body",
+        description: "THC + CBD Infused - 50mg THC + 50mg CBD",
+        imageUrl: "/products/huckleberry-body.webp",
+        ingredients: "THC, CBD, Natural Huckleberry Flavor",
+        category: "THC Infused"
       },
       {
-        name: "Berry Bliss",
-        description: "Mixed berries and açaí",
-        imageUrl: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-        ingredients: "Blueberries, Strawberries, Açaí, Raspberry",
-        category: "Berry"
+        name: "Orange Vanilla Party",
+        description: "THC Infused Orange Vanilla - 50mg THC",
+        imageUrl: "/products/orange-vanilla.webp",
+        ingredients: "THC, Natural Orange Flavor, Vanilla Extract",
+        category: "THC Infused"
       },
       {
-        name: "Golden Root",
-        description: "Carrot, ginger, and turmeric",
-        imageUrl: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-        ingredients: "Carrot, Ginger, Turmeric, Orange",
-        category: "Root Vegetable"
-      },
-      {
-        name: "Purple Power",
-        description: "Grape and blueberry blend",
-        imageUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-        ingredients: "Purple Grapes, Blueberries, Blackberries",
-        category: "Antioxidant"
-      },
-      {
-        name: "Ruby Red",
-        description: "Pomegranate and cherry",
-        imageUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-        ingredients: "Pomegranate, Cherry, Cranberry",
-        category: "Superfruit"
+        name: "Strawberry Party",
+        description: "THC Infused Strawberry - 50mg THC",
+        imageUrl: "/products/strawberry.webp",
+        ingredients: "THC, Natural Strawberry Flavor",
+        category: "THC Infused"
       }
     ];
 

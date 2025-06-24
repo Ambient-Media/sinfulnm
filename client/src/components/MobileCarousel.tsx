@@ -15,7 +15,7 @@ export default function MobileCarousel() {
     if (products.length === 0 || isPaused) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % products.length);
+      setCurrentSlide((prev) => (prev + 1) % Math.min(products.length, 4));
     }, 4000);
 
     return () => clearInterval(interval);
@@ -51,7 +51,7 @@ export default function MobileCarousel() {
   return (
     <div className="lg:hidden relative" onTouchStart={handleTouch}>
       <div className="carousel-container relative overflow-hidden rounded-3xl">
-        {products.map((product, index) => (
+        {products.slice(0, 4).map((product, index) => (
           <div
             key={product.id}
             className={`carousel-item ${
@@ -65,7 +65,7 @@ export default function MobileCarousel() {
 
       {/* Carousel Controls */}
       <div className="flex justify-center mt-6 space-x-2">
-        {products.map((_, index) => (
+        {products.slice(0, 4).map((_, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
