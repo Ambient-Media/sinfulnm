@@ -3,12 +3,18 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install --legacy-peer-deps
+        - node --version
+        - npm --version
+        - npm config set registry https://registry.npmjs.org/
+        - npm config set fund false
+        - npm config set audit false
+        - npm config set timeout 600000
+        - npm install --no-optional --legacy-peer-deps --maxsockets 10
     build:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: dist/public
+    baseDirectory: dist
     files:
       - '**/*'
   cache:
