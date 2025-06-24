@@ -76,7 +76,7 @@ export default function MobileCarousel() {
             <img 
               src={product.imageUrl} 
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </button>
         ))}

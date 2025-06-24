@@ -50,7 +50,7 @@ export default function ProductCard({ product, className = "" }: ProductCardProp
       <img 
         src={product.imageUrl} 
         alt={product.name}
-        className="w-full h-48 lg:h-64 object-cover group-hover:scale-105 transition-transform duration-500" 
+        className="w-full h-48 lg:h-64 object-contain group-hover:scale-105 transition-transform duration-500" 
       />
       <div className="p-4 lg:p-6">
         <h3 className="text-lg lg:text-2xl font-bold text-gray-800 mb-2">{product.name}</h3>
