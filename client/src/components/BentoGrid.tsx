@@ -24,7 +24,7 @@ export default function BentoGrid() {
   return (
     <div className="hidden lg:block">
       <div className="bento-grid">
-        {products.map((product, index) => (
+        {products.slice(0, 4).map((product, index) => (
           <ProductCard
             key={product.id}
             product={product}
