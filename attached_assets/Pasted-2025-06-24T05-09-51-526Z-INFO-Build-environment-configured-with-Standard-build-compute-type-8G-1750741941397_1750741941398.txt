@@ -1,0 +1,157 @@
+2025-06-24T05:09:51.526Z [INFO]: # Build environment configured with Standard build compute type: 8GiB Memory, 4vCPUs, 128GB Disk Space
+
+1
+
+2025-06-24T05:09:52.053Z [INFO]: # Cloning repository: git@github.com:Ambient-Media/sinfulnm.git
+
+2
+
+2025-06-24T05:09:53.062Z [INFO]: 
+
+3
+
+2025-06-24T05:09:53.063Z [INFO]: Cloning into 'sinfulnm'...
+
+4
+
+2025-06-24T05:09:53.063Z [INFO]: # Switching to commit: 969e2dccc4c274da0f5b3a693e1dbc83f02104c6
+
+5
+
+2025-06-24T05:09:53.095Z [INFO]: Note: switching to '969e2dccc4c274da0f5b3a693e1dbc83f02104c6'.
+
+6
+
+                                 You are in 'detached HEAD' state. You can look around, make experimental
+
+7
+
+                                 changes and commit them, and you can discard any commits you make in this
+
+8
+
+                                 state without impacting any branches by switching back to a branch.
+
+9
+
+                                 If you want to create a new branch to retain commits you create, you may
+
+10
+
+                                 do so (now or later) by using -c with the switch command. Example:
+
+11
+
+                                 git switch -c <new-branch-name>
+
+12
+
+                                 Or undo this operation with:
+
+13
+
+                                 git switch -
+
+14
+
+                                 Turn off this advice by setting config variable advice.detachedHead to false
+
+15
+
+                                 HEAD is now at 969e2dc Restored to 'c5a2e540bf9ccbb267bfee2ac200e5c8215079d4'
+
+16
+
+2025-06-24T05:09:53.184Z [INFO]: Successfully cleaned up Git credentials
+
+17
+
+2025-06-24T05:09:53.184Z [INFO]: # Checking for Git submodules at: /codebuild/output/src3322597590/src/sinfulnm/.gitmodules
+
+18
+
+2025-06-24T05:09:53.191Z [INFO]: # Retrieving environment cache...
+
+19
+
+2025-06-24T05:09:53.267Z [INFO]: # Retrieved environment cache
+
+20
+
+2025-06-24T05:09:53.268Z [INFO]: ---- Setting Up SSM Secrets ----
+
+21
+
+2025-06-24T05:09:53.268Z [INFO]: SSM params {"Path":"/amplify/dy7p2lpvwezxc/main/","WithDecryption":true}
+
+22
+
+2025-06-24T05:09:53.314Z [WARNING]: !Failed to set up process.env.secrets
+
+23
+
+2025-06-24T05:09:54.106Z [INFO]: # No package override configuration found.
+
+24
+
+2025-06-24T05:09:54.110Z [INFO]: # Retrieving cache...
+
+25
+
+2025-06-24T05:09:59.746Z [INFO]: # Extracting cache...
+
+26
+
+2025-06-24T05:10:05.510Z [INFO]: # Extraction completed
+
+27
+
+2025-06-24T05:10:05.624Z [INFO]: # Retrieved cache
+
+28
+
+2025-06-24T05:10:10.384Z [INFO]: ## Starting Backend Build
+
+29
+
+                                 ## Checking for associated backend environment...
+
+30
+
+                                 ## No backend environment association found, continuing...
+
+31
+
+                                 ## Completed Backend Build
+
+32
+
+2025-06-24T05:10:10.389Z [INFO]: {"backendDuration": 0}
+
+33
+
+                                 ## Starting Frontend Build
+
+34
+
+                                 # Starting phase: preBuild
+
+35
+
+                                 # Executing command: npm ci
+
+36
+
+2025-06-24T05:10:29.880Z [WARNING]: npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+
+37
+
+2025-06-24T05:10:29.900Z [WARNING]: npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+
+38
+
+2025-06-24T05:10:35.011Z [WARNING]: npm error code ECONNRESET
+
+39
+
+2025-06-24T05:10:35.016Z [WARNING]: npm error network aborted

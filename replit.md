@@ -108,6 +108,7 @@ JuiceCraft is a modern e-commerce web application for premium artisan juices, bu
 
 ## Changelog
 
+- June 24, 2025: Confirmed cart plus/minus buttons are functional, updated AWS Amplify build configuration to resolve npm connection issues
 - June 24, 2025: Fixed mobile carousel display with proper fade transitions and removed extra formatting box
 - June 24, 2025: Resolved cart functionality issues with session-based storage and red badge counter
 - June 24, 2025: Added cart functionality with red badge counter and slide-out menu
