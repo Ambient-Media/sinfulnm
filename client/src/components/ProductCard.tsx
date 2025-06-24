@@ -4,6 +4,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus, Check } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import type { Product, AddToCartRequest } from "@/lib/types";
 
 interface ProductCardProps {
@@ -37,6 +38,11 @@ export default function ProductCard({ product, className = "" }: ProductCardProp
       queryClient.invalidateQueries({ queryKey: ['/api/cart'] });
       setJustAdded(true);
       setTimeout(() => setJustAdded(false), 1500);
+      toast({
+        title: "Added to cart!",
+        description: `${product.name} has been added to your cart.`,
+        duration: 3000,
+      });
     },
   });
 

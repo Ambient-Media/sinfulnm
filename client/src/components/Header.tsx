@@ -5,6 +5,7 @@ import type { CartItemWithProduct } from "@/lib/types";
 import sinfulLogoPath from "@assets/Rounded-2023-Sinful-Logo-White_1750732218496.png";
 import LoginModal from "@/components/LoginModal";
 import OrderForm from "@/components/OrderForm";
+import CartSlideout from "@/components/CartSlideout";
 
 function getSessionId(): string {
   let sessionId = localStorage.getItem('sinful-session-id');
@@ -80,7 +81,10 @@ export default function Header() {
 
             {/* Cart & Mobile Menu */}
             <div className="flex items-center ml-6">
-              <button className="relative p-2 text-gray-700 hover:text-red-600 transition-colors duration-200">
+              <button 
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
+              >
                 <ShoppingCart className="w-6 h-6" />
                 {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
@@ -172,6 +176,13 @@ export default function Header() {
       <LoginModal 
         isOpen={isLoginModalOpen} 
         onClose={() => setIsLoginModalOpen(false)} 
+      />
+
+      <CartSlideout
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cartItems={cartItems}
+        sessionId={sessionId}
       />
 
       <OrderForm
