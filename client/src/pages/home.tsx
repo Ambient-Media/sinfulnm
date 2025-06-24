@@ -11,11 +11,11 @@ export default function Home() {
       <section 
         className="relative text-white py-10 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/attached_assets/white-sands-national-park-at-sunset-rule-of-thirds-wK4f76gsS7G5ZndWa24I9A-0h7rdUx5Si-tUCXvDyC-bQ(1)_1750733341857.png')"
+          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('./attached_assets/white-sands-national-park-at-sunset-rule-of-thirds-wK4f76gsS7G5ZndWa24I9A-0h7rdUx5Si-tUCXvDyC-bQ(1)_1750733341857.png')"
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-800">Shop Sinful New Mexico</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Shop Sinful New Mexico</h1>
           <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto font-medium">
             Wholesale ordering
           </p>
@@ -26,9 +26,8 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Premium Collection</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our curated selection of artisanal juices, each crafted to perfection.
+              Order here
             </p>
           </div>
 
