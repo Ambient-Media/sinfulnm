@@ -17,15 +17,7 @@ export interface IStorage {
 }
 
 // Order types
-export type Order = {
-  id: number;
-  userId: number;
-  items: CartItem[];
-  total: number;
-  createdAt: string;
-};
-
-export type InsertOrder = Omit<Order, 'id' | 'createdAt'>;
+import type { Order, InsertOrder } from "../shared/schema.js";
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
