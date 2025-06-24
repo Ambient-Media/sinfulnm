@@ -37,6 +37,7 @@ export default function ProductCard({ product, className = "" }: ProductCardProp
     },
     onSuccess: () => {
       const sessionId = getSessionId();
+      queryClient.invalidateQueries({ queryKey: ['/api/cart'] });
       queryClient.invalidateQueries({ queryKey: ['/api/cart', sessionId] });
       setJustAdded(true);
       setTimeout(() => setJustAdded(false), 1500);
@@ -50,6 +51,7 @@ export default function ProductCard({ product, className = "" }: ProductCardProp
 
   const handleAddToCart = () => {
     const sessionId = getSessionId();
+
     addToCartMutation.mutate({
       productId: product.id,
       quantity,

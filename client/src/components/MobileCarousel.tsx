@@ -91,15 +91,24 @@ export default function MobileCarousel() {
 
   return (
     <div className="lg:hidden relative" onTouchStart={handleTouch}>
-      <div className="carousel-container rounded-3xl overflow-hidden shadow-xl">
+      <div className="carousel-container rounded-3xl overflow-hidden shadow-xl bg-white">
         {displayProducts.slice(0, 4).map((product, index) => (
           <div
             key={product.id}
             className={`carousel-item ${
               index === currentSlide ? 'active' : ''
             }`}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              opacity: index === currentSlide ? 1 : 0,
+              transition: 'opacity 1.2s ease-in-out',
+              pointerEvents: index === currentSlide ? 'auto' : 'none'
+            }}
           >
-            <ProductCard product={product} className="rounded-none" />
+            <ProductCard product={product} className="rounded-none shadow-none" />
           </div>
         ))}
       </div>
