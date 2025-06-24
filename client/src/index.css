@@ -128,28 +128,7 @@
   grid-row: 2;
 }
 
-/* Mobile Carousel */
-.carousel-container {
-  position: relative;
-  min-height: 500px;
-  overflow: hidden;
-  border-radius: 1.5rem;
-}
-
-.carousel-item {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1.2s ease-in-out;
-  pointer-events: none;
-}
-
-.carousel-item.active {
-  opacity: 1;
-  pointer-events: auto;
-}
+/* Mobile Carousel - removed complex positioning */
 
 /* Hover Effects */
 .hover-lift {
