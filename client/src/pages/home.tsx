@@ -9,9 +9,9 @@ export default function Home() {
       
       {/* Hero Section */}
       <section 
-        className="relative text-white py-20 bg-cover bg-center bg-no-repeat"
+        className="relative text-white py-10 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/attached_assets/white-sands-national-park-at-sunset-rule-of-thirds-wK4f76gsS7G5ZndWa24I9A-0h7rdUx5Si-tUCXvDyC-bQ(1)_1750733341857.png')"
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
